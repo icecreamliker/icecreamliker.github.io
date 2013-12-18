@@ -1,4 +1,6 @@
 task :default => :server
+deploy_branch  = "master"
+deploy_dir     = "_heroku" 
 
 desc 'Clean up generated site'
 task :clean do
@@ -7,12 +9,14 @@ end
 
 desc 'Build site with Jekyll'
 task :build => :clean do
-  jekyll('build')
+  less
+  jekyll
 end
 
-desc 'Start server with --watch'
+desc 'Start server with --auto'
 task :server => :clean do
-  jekyll('serve --watch')
+  less
+  jekyll('--server --auto')
 end
 
 desc 'Build and deploy'
@@ -56,4 +60,27 @@ end
 
 def jekyll(opts = '')
   sh 'jekyll ' + opts
+end
+
+def less(opts = '')
+  Dir::mkdir('stylesheets') unless File.directory?('stylesheets')
+  sh 'lessc -x _less/styles.less > stylesheets/styles.css'
+end
+
+desc "deploy basic rack app to heroku"
+multitask :heroku do
+  puts "## Deploying to Heroku "
+  (Dir["#{deploy_dir}/public/*"]).each { |f| rm_rf(f) }
+  system "cp -R _site/* #{deploy_dir}/public"
+  puts "\n## copying _site to #{deploy_dir}/public"
+  cd "#{deploy_dir}" do
+    system "git add ."
+    system "git add -u"
+    puts "\n## Committing: Site updated at #{Time.now.utc}"
+    message = "Site updated at #{Time.now.utc}"
+    system "git commit -m '#{message}'"
+    puts "\n## Pushing generated #{deploy_dir} website"
+    system "git push heroku #{deploy_branch}"
+    puts "\n## Heroku deploy complete"
+  end
 end
