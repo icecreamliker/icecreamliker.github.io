@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+ 
+ <title>Life is tough, but I'm tougher.</title>
+ <link href="yaoli.us/" rel="self"/>
+ <link href="yaoli.us"/>
+ <updated>2014-01-01T13:09:40+08:00</updated>
+ <id>yaoli.us</id>
+ <author>
+   <name>Lee</name>
+   <email>yaoli111144@gmail.com</email>
+ </author>
+
+ 
+ <entry>
+   <title>test</title>
+   <link href="yaoli.us/test/2013/12/11/test"/>
+   <updated>2013-12-11T00:00:00+08:00</updated>
+   <id>yaoli.us/test/2013/12/11/test</id>
+   <content type="html">&lt;h1 id=&quot;&quot;&gt;测试博客&lt;/h1&gt;
+
+&lt;h2 id=&quot;_2&quot;&gt;欢迎使用&lt;/h2&gt;
+
+&lt;p&gt;如果你能看到本页面，说明博客已经可以正常使用，enjoy yourself.&lt;/p&gt;
+
+&lt;p&gt;引用 &lt;a href=&#39;http://weibo.com/dawaiwaiwai&#39;&gt;女流氓.exe&lt;/a&gt; 的一句话 “今后的路，我希望你能自己好好走下去，而我，坐车。”&lt;/p&gt;
+
+&lt;p&gt;希望你从这里开始 &lt;a href=&#39;http://mindhacks.cn/2009/02/15/why-you-should-start-blogging-now/&#39;&gt;[BetterExplained]为什么你应该（从现在开始就）写博客&lt;/a&gt;&lt;/p&gt;</content>
+ </entry>
+ 
+ 
+</feed>

@@ -1,98 +1,98 @@
-# Jekyll Bootstrap Template
+# 个人博客
 
-This is a forked version of [Kris Brown's jekyll template](https://github.com/krisb/jekyll-template/) modified to provide a layout driven by [Twitter Bootstrap](http://twitter.github.com/bootstrap/).
+[site](http://site.github.io)
 
-Additional differences between this and the original are:
+个人博客，转载请注明出处，保留所有权利。
 
- * [Less](http://lesscss.org/) is used instead of Compass for CSS.
- * The pages render HTML5 semantic elements (nav, header, article, time) where appropriate.  The design was based on [this article from HTML5 Doctor](http://html5doctor.com/designing-a-blog-with-html5/).
- * The 'html5 shim' is used to support these HTML5 elements older versions of IE.
- * A 'recent entries' navigation bar was added on the left hand side of the page.
- * A Google site search was added to the top of the page.
- * Deploy to Heroku through rake added based on [this blog post](http://joshuawood.net/how-to-deploy-jekyll-slash-octopress-to-heroku/).
+## 使用的工具
 
-A sample version of the template is available at http://electric-autumn-8147.heroku.com/.
+1. 图标库         [Font-Awesome](http://fortawesome.github.io/Font-Awesome)
 
-The original documentation is below.  The only difference in the installation is that the lessc executable is required on the path when running rake.
+1. 静态页面服务   [Github pages](http://pages.github.com)
 
-# Original documentation from Jekyll Template
+1. 博客生成工具   [Jekyll](https://github.com/mojombo/jekyll)
 
-This is a template project for jekyll that you can clone and customise to suit your needs.  Its quite opinionated in what it provides, the idea is to get you up and running with feed support, analytics and comments and feedback.  This is meant for a standalone blog, not for [github pages](http://pages.github.com/)
+1. 博客生成工具   [Jekyll-Bootstrap](http://jekyllbootstrap.com/)
 
-Please don't fork otherwise I'll see lots of noise on the fork queue that are your customisation for your blog.  I suggest you create a repo on github (public or private, its up to you) and do the following assuming the new repo is available at `https://github.com/username/reponame`:
+1. 前端工具库     [JQuery](http://jquery.com/)
 
-    git clone https://github.com/krisb/jekyll-template.git mysite
-    cd mysite
-    rm -rf .git
-    git init
-    git add -A
-    git commit -m 'initial template based on https://github.com/krisb/jekyll-template'
-    git remote add origin git@github.com:username/reponame.git
-    git push -u origin master
+1. 表格控件       [DataTables](http://www.datatables.net/)
 
-The following sections detail how to set up and use the template.  The commands are known to work on my macbook, YRMV.
+1. 前端框架       [Twitter Bootstrap](http://twitter.github.io/bootstrap)
 
-## Ruby 1.9.2 via RVM
+1. 前端排版样式表 [Typo.css](http://typo.sofish.de)
 
-I recommend that you install [rvm](http://rvm.beginrescueend.com/) and set everything up using that.  For single user install run the following:
+1. 开发工具       [Vim](http://www.vim.org/)
 
-    bash < <( curl http://rvm.beginrescueend.com/releases/rvm-install-head )
+## 使用方法
 
-Follow the instructions, adding the necessary lines in `.bashrc`, e.g.
+### 通过fork
 
-    # RVM
-    if [[ -s "$HOME/.rvm/scripts/rvm" ]] ; then
-      source "$HOME/.rvm/scripts/rvm"
-    fi
+1. fork我的博客，修改fork后的项目名称为：你的github ID.github.com
+1. 修改fork后的远程仓库地址：git remote set-url origin 替换为你的仓库地址
+1. 参见清理文件并修改配置
 
-Now source `.bashrc` (you don't need to do this normally as it runs on login, it is just to update the current term window)
+### 通过clone
 
-    source ~/.bashrc
+1. git clone https://github.com/site/site.github.com.git 替换为你的目录名
+1. git remote set-url origin 替换为你的仓库地址
+1. 参见清理文件并修改配置
 
-You can then install and use ruby 1.9.2:
+### 清理文件并修改配置
 
-    rvm install 1.9.2
-    rvm use 1.9.2
+清理文件步骤
 
-## Gems
+1. 删除\_post目录下所有文件
+1. 删除pages目录
+1. 删除CNAME文件，如果你需要自定义域名，可以修改CNAME文件
+1. 修改config.yml中的设置，需要自定义的地方已经加了注释，建议把那个文件看一遍，对设置有个大概的了解
+1. 我使用我的id作为了一些设置的属性名、文件名、目录名，如果你想修改，最好使用替换工具，把所有文件中的"site"，替换为你想要的名字 然后重命名以我的id为名的所有文件和目录
+1. config.yml中的comments和analytics必须修改，配置上你自己的账号，如果不想配置，请置provider为false
+1. 出现问题，建议自己google，有很多详细的教程，或者直接参考官方文档 [jekyll](http://jekyllrb.com)
+1. 有好的建议或者要求，欢迎提issue或者发邮件交流
 
-Run the following to install the necessary gems:
+## 注意
 
-    gem install jekyll rdiscount compass
+### 归档页面链接图标
 
-## Markup
+归档页面文章前的符号是font-awesome的图表名称，请在post中的yaml指定icon属性
 
-I prefer markdown, but you can use a number of supported markup formats.
+比如想展示class名字为icon-github的图标，指定icon属性值为github即可,具体请参考post中的写法
 
-## Pygments (code highlighting)
+如果使用rake文件生成post，post默认的图标是file-alt
 
-Assuming you have python installed with `easy_install` available:
+### 导航栏
 
-    sudo easy_install Pygments
+为了自定义导航栏子栏目的顺序，重写了这部分的逻辑，具体在文件\_include/site/navigation\_list中
 
-## Stylesheets
+为了在后台实现高亮当前的导航页，用一种不太好的方式实现了这个功能，建议使用js在页面加载后进行设置
 
-I recommend that you use [compass](http://compass-style.org/).  I've included `_sass/mixins/_syntax.scss` for the pygments syntax highlighting.
+用我自己使用的导航栏来作为示例，我的导航栏有四个，对应文件在根目录下，均为html文件
 
-## Rake deploy task
+1. 文章 /posts.html
 
-The following tasks are available (use `rake -T` to list them):
+1. 时间线 /timeline.html
 
-    rake build        # Build site with Jekyll
-    rake check_links  # Check links for site already running on localhost:4000
-    rake clean        # Clean up generated site
-    rake deploy       # Build and deploy
-    rake server       # Start server with --auto
+1. 目录 /categories.html
 
-The deploy task is simplistic and uses rsync to copy the generated site to your server.  You will need to replace the username, servername and path as appropriate.
+1. 关于 /about.html
 
-## Configuration
+首先color\_hack这个变量存放导航栏的文件名， `{% assign color_hack = 'posts timeline categories about' %}`
 
-There are a number of values in `_config.yml` to customise your site.  Change as appropriate.
+比如点击导航栏的‘文章’链接，page.url变量的值是/posts.html，将这个字符串去除‘/’，去除‘.html’，得到字符串posts，存入current\_nav变量
 
-The following enhancements are baked in and enabled if you provide the configuration required.
+然后将color\_hack中的current\_nav替换为'active'，即将posts替换为active，得到color\_hack的指为'active timeline categories about'
 
-* [Google Analytics](http://www.google.com/analytics) - web analytics using the [async](http://www.google.com/support/analytics/bin/answer.py?hl=en&answer=174090) script
-* [Disqus](http://disqus.com/) - comments and feedback
-* [Feedburner](http://feedburner.google.com/) - rss feeds
-* [Github Ribbon](https://github.com/blog/273-github-ribbons) - fork me on github ribbon
+然后将数组分割，得到一个数组[active,timeline,categories,about]，赋值给color\_hack
+
+然后按顺序指定导航栏的html内容，顺序应与color\_hack初始值中的顺序相对应，class属性的指即从对应的color\_hack中按顺序获取
+
+1. `<li class="{{color_hack[0]}}"><a href="/posts.html">文章</a></li>`
+
+1. `<li class="{{color_hack[1]}}"><a href="/timeline.html">归档</a></li>`
+
+1. `<li class="{{color_hack[2]}}"><a href="/categories.html">目录</a></li>`
+
+1. `<li class="{{color_hack[3]}}"><a href="/about.html">关于</a></li>`
+
+这样当前访问的导航的class会被指定为active，其他导航的class会被指定为各自的文件名
